@@ -1,0 +1,71 @@
+@font-face {
+  font-family: 'LatoBlack';
+  src: url('../../public/assets/fonts/Lato-Black.woff2') format('woff2');
+  font-style: normal;
+  font-weight: $base-font-weight-black;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LatoBlackItalic';
+  src: url('../../public/assets/fonts/Lato-BlackItalic.woff2') format('woff2');
+  font-style: normal;
+  font-weight: $base-font-weight-black;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LatoBold';
+  src: url('../../public/assets/fonts/Lato-Bold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: $base-font-weight-bold;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LatoBoldItalic';
+  src: url('../../public/assets/fonts/Lato-BoldItalic.woff2') format('woff2');
+  font-style: normal;
+  font-weight: $base-font-weight-bold;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LatoLight';
+  src: url('../../public/assets/fonts/Lato-Light.woff2') format('woff2');
+  font-style: normal;
+  font-weight: $base-font-weight-light;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LatoLightItalic';
+  src: url('../../public/assets/fonts/Lato-LightItalic.woff2') format('woff2');
+  font-style: normal;
+  font-weight: $base-font-weight-light;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../../public/assets/fonts/Lato-Regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: $base-font-weight-regular;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LatoThin';
+  src: url('../../public/assets/fonts/Lato-Thin.woff2') format('woff2');
+  font-style: normal;
+  font-weight: $base-font-weight-thin;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LatoThinItalic';
+  src: url('../../public/assets/fonts/Lato-ThinItalic.woff2') format('woff2');
+  font-style: normal;
+  font-weight: $base-font-weight-thin;
+  font-display: swap;
+}
