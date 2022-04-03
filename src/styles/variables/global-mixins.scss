@@ -1,0 +1,54 @@
+//mixins
+
+//fonts
+@mixin font($font, $line-height) {
+  font-size: rem($font);
+  line-height: rem($line-height);
+}
+
+@mixin fontLight() {
+  font-weight: $base-font-weight-light;
+}
+
+@mixin fontRegular() {
+  font-weight: $base-font-weight-regular;
+}
+
+@mixin fontBold() {
+  font-weight: $base-font-weight-bold;
+}
+
+@mixin hover() {
+  &:hover {
+    @media screen and (min-width: 1024px) {
+      @content;
+    }
+  }
+}
+
+@mixin hover-focus() {
+  &:hover,
+  &:focus {
+    @content;
+  }
+}
+
+@mixin no-scrollbar() {
+  -ms-overflow-style: none; // IE and Edge
+  scrollbar-width: none; // Firefox
+
+  &::-webkit-scrollbar {
+    display: none; // Chrome, Safari and Opera
+  }
+}
+
+@mixin ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+//gradients
+@mixin gradient($direction, $colors, $colors2) {
+  background: linear-gradient($direction, $colors, $colors2);
+}

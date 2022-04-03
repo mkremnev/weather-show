@@ -1,0 +1,30 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  font-family: $fonts;
+  font-size: $base-font-size + px;
+  line-height: 1;
+}
+
+body {
+  scroll-behavior: smooth;
+  height: 100%;
+  font-family: $fonts;
+  @include fontRegular();
+  @include font(16, 20);
+  background-color: $black;
+  color: $black;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
