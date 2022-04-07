@@ -18,6 +18,10 @@
   font-weight: $base-font-weight-bold;
 }
 
+@mixin fontBlack() {
+  font-weight: $base-font-weight-black;
+}
+
 @mixin hover() {
   &:hover {
     @media screen and (min-width: 1024px) {

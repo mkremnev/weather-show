@@ -25,6 +25,25 @@ body {
   -ms-overflow-style: scrollbar;
   -webkit-overflow-scrolling: touch;
   -webkit-tap-highlight-color: transparent;
-  overflow-y: auto;
-  overflow-x: hidden;
+}
+
+.container {
+  @include wrapper();
+  height: 100%;
+  position: relative;
+}
+
+.scroll-section {
+  &::-webkit-scrollbar {
+    width: rem(4);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $dark-blue;
+    border-radius: rem(6);
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
 }
