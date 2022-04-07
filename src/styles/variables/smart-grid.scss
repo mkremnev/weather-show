@@ -59,16 +59,15 @@ $fields_xl: 10px;
   #{$type}-right: $offset_one_side;
 }
 
-// @mixin wrapper() {
-//   max-width: 1200px;
-//   margin: 0 auto;
-//   @include wrapper-full();
-// }
+@mixin wrapper() {
+  max-width: 1200px;
+  margin: 0 auto;
+  @include wrapper-full();
+}
 
 @mixin wrapper() {
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 
   @include wrapper-full();
 
