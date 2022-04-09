@@ -25,6 +25,7 @@ module.exports = {
     'no-unused-expressions': 'off',
     'no-console': 'off',
     'consistent-return': 'off',
+    'import/no-cycle': [0, { ignoreExternal: true }],
   },
   settings: {
     'import/resolver': {
