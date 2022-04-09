@@ -5,8 +5,8 @@ const DaysItemsWeather = () => {
   const list = document.createElement('div');
   list.classList.add('days-items-weather', 'scroll-section');
 
-  observer.subscribe(({ store }) => {
-    store.daily.daily.forEach((item, index) => {
+  observer.subscribe(({ weather }) => {
+    weather.daily.forEach((item, index) => {
       if (index > 0) {
         list.insertAdjacentElement(
           'beforeend',

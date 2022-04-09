@@ -5,18 +5,12 @@ const HeaderWeather = () => {
   headerWeather.classList.add('header-weather');
 
   const headerTitle = document.createElement('div');
-  headerTitle.classList.add('header-title', 'loading');
-
-  // TODO реализовать часы
-  const headerDay = document.createElement('div');
-  headerDay.classList.add('header-day');
+  headerTitle.classList.add('header-title');
 
   headerWeather.insertAdjacentElement('afterbegin', headerTitle);
-  headerWeather.insertAdjacentElement('afterbegin', headerDay);
 
-  observer.subscribe(({ store }) => {
-    headerTitle.classList.remove('loading');
-    headerTitle.textContent = store.current.weather[0].description;
+  observer.subscribe(({ weather }) => {
+    headerTitle.textContent = weather.current.weather[0].description;
   });
 
   return headerWeather;

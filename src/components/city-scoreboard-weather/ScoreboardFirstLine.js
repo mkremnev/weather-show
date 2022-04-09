@@ -23,7 +23,7 @@ const ScoreboardFirstLine = () => {
          `
   );
 
-  observer.subscribe(({ store }) => {
+  observer.subscribe(({ weather }) => {
     const humidity = scoreboardFirstLine.querySelector(
       '.humidity-weather > .item-value'
     );
@@ -31,8 +31,8 @@ const ScoreboardFirstLine = () => {
       '.wind-weather > .item-value'
     );
 
-    humidity.textContent = `${Math.round(store.current.main.humidity)} %`;
-    wind.textContent = `${Math.round(store.current.wind.speed)} km`;
+    humidity.textContent = `${Math.round(weather.current.humidity)} %`;
+    wind.textContent = `${Math.round(weather.current.wind_speed)} km`;
   });
 
   return scoreboardFirstLine;

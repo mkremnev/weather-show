@@ -49,11 +49,9 @@
   @include fontBlack;
   @include font(37, 45);
   color: $dark-blue;
-}
-.header-day {
-  @include font(25, 25);
-  color: $dark-blue;
-  opacity: 0.5;
+  &:first-letter {
+    text-transform: uppercase;
+  }
 }
 // header-weather
 
@@ -279,10 +277,59 @@
   }
 }
 
-.loading {
+//nav-weather
+
+//loading
+.box {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background: $white;
+}
+.loader {
+  border-radius: 50%;
+  box-shadow: 0 1em 0 -0.2em $dark-blue;
   position: relative;
+  animation: loading 0.8s ease-in-out alternate infinite;
+  animation-delay: 0.32s;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  width: rem(16);
+  height: rem(16);
+  color: inherit;
+  vertical-align: middle;
+  pointer-events: none;
+  &:after,
   &:before {
-    content: 'loading';
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    box-shadow: inherit;
+    animation: inherit;
+  }
+  &:before {
+    left: -1em;
+    animation-delay: 0.48s;
+  }
+  &:after {
+    right: -1em;
+    animation-delay: 0.16s;
   }
 }
-//nav-weather
+
+@keyframes loading {
+  0% {
+    box-shadow: 0 2em 0 -0.2em $dark-blue;
+  }
+  100% {
+    box-shadow: 0 1em 0 -0.2em $dark-blue;
+  }
+}

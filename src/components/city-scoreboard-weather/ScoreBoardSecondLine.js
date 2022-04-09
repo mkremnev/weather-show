@@ -15,11 +15,11 @@ const ScoreBoardSecondLine = () => {
           `
   );
 
-  observer.subscribe(({ store }) => {
+  observer.subscribe(({ weather }) => {
     const tempWeather = scoreboardSecondLine.querySelector(
       '.temp-weather > .temp-value'
     );
-    tempWeather.textContent = `${Math.round(store.current.main.temp)}`;
+    tempWeather.textContent = `${Math.round(weather.current.temp)}`;
   });
 
   return scoreboardSecondLine;

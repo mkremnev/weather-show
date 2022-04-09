@@ -5,13 +5,12 @@ const CityNameWeather = () => {
   cityNameWeather.classList.add('city-name-weather');
 
   const cityName = document.createElement('div');
-  cityName.classList.add('city-name', 'loading');
+  cityName.classList.add('city-name');
 
   cityNameWeather.insertAdjacentElement('afterbegin', cityName);
 
-  observer.subscribe(({ store }) => {
-    cityName.classList.remove('loading');
-    cityName.textContent = store.name;
+  observer.subscribe(({ city }) => {
+    cityName.textContent = city.city;
   });
 
   return cityNameWeather;
