@@ -1,9 +1,21 @@
-import ContainerBg from './components/container-bg/ContainerBg';
-import DisplayWeather from './components/display-weather/DisplayWeather';
-import { Observer } from './store';
-import './styles/main.scss';
+import ContainerBg from '@/components/container-bg/ContainerBg';
+import DisplayWeather from '@/components/display-weather/DisplayWeather';
+import Store from '@/store';
+import { Observer } from '@/observer';
+import '@/styles/main.scss';
 
 export const observer = new Observer();
+export const store = new Store();
+
+console.log(store);
+
+const setDataFirstRender = async () => {
+  await store.actionSetName();
+  await store.actionSetCurrent();
+  await store.actionSetDailyWeather();
+};
+
+setDataFirstRender();
 
 const App = () => {
   const app = document.createElement('div');
@@ -14,7 +26,7 @@ const App = () => {
 
   app.insertAdjacentElement('afterbegin', containerBg);
   app.insertAdjacentElement('afterbegin', displayWeather);
-  return app
+  return app;
 };
 
 export default App;

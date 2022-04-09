@@ -1,17 +1,50 @@
-export class Observer {
+import { getWeatherCurrent } from '@/api/apiGetWeatherCurrent';
+import { getWeatherDaily } from '@/api/apiGetWeatherDaily';
+import { apiGetGeoLocation } from '@/api/apiGetGeoLocation';
+import { apiGetHistory, apiSetHistory } from '@/api/apiLocalStorage';
+import { createMap } from '@/api/apiYandexMap';
+
+class Store {
   constructor() {
-    this.observer = [];
+    this.store = {
+      name: '',
+      current: {},
+      daily: {},
+      history: [],
+      map: {},
+    };
   }
 
-  subscribe(fn) {
-    this.observer.push(fn);
+  async actionSetDailyWeather() {
+    const data = await getWeatherDaily(this.store.current);
+    this.store.daily = data;
   }
 
-  unsubscribe(fn) {
-    this.observer = this.observer.filter((subscriber) => subscriber !== fn);
+  async actionSetCurrent() {
+    const data = await getWeatherCurrent(this.store.name);
+    this.store.current = data;
   }
 
-  notify(data) {
-    this.observer.forEach((subscriber) => subscriber(data));
+  actionSetHistory(data) {
+    this.store.history = apiSetHistory(data);
+  }
+
+  actionGetHistory() {
+    this.store.history = apiGetHistory();
+  }
+
+  async actionSetName() {
+    const name = await apiGetGeoLocation().then((res) => res.city);
+    this.store.name = name ?? 'Moscow';
+  }
+
+  actionCreateMap(data) {
+    this.map = createMap(data);
+  }
+
+  actionSetCenterMap(data) {
+    this.map.setCenter(data);
   }
 }
+
+export default Store;
