@@ -14,7 +14,7 @@ const App = () => {
 
   app.insertAdjacentElement('afterbegin', containerBg);
   app.insertAdjacentElement('afterbegin', displayWeather);
-  return app;
+  return app
 };
 
 export default App;
