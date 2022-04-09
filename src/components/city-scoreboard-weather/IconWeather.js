@@ -1,17 +1,27 @@
+import { observer } from '@/app';
+
 const IconWeather = () => {
-  const el = document.createElement('div');
-  el.classList.add('icon-weather');
+  const iconWeather = document.createElement('div');
+  iconWeather.classList.add('icon-weather');
 
-  el.insertAdjacentHTML(
-    'afterbegin',
-    `
-          <div class="icon-wrapper-weather">
-            <img src="/assets/img/icon.png" alt="Icon" />
-          </div>
-        `
-  );
+  const iconWrapperWeather = document.createElement('div');
+  iconWrapperWeather.classList.add('icon-wrapper-weather');
 
-  return el;
+  const image = document.createElement('img');
+  image.setAttribute('src', '/assets/img/icon.png');
+  image.setAttribute('alt', 'Weather');
+
+  iconWrapperWeather.insertAdjacentElement('beforeend', image);
+  iconWeather.insertAdjacentElement('beforeend', iconWrapperWeather);
+
+  observer.subscribe(({ store }) => {
+    image.setAttribute(
+      'src',
+      `http://openweathermap.org/img/wn/${store.current?.weather[0].icon}@2x.png`
+    );
+  });
+
+  return iconWeather;
 };
 
 export default IconWeather;
