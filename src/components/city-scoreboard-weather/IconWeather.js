@@ -19,7 +19,7 @@ const IconWeather = () => {
       'src',
       `http://openweathermap.org/img/wn/${weather.current?.weather[0].icon}@2x.png`
     );
-  });
+  }, 'api');
 
   return iconWeather;
 };

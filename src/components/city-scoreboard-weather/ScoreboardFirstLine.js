@@ -33,7 +33,7 @@ const ScoreboardFirstLine = () => {
 
     humidity.textContent = `${Math.round(weather.current.humidity)} %`;
     wind.textContent = `${Math.round(weather.current.wind_speed)} km`;
-  });
+  }, 'api');
 
   return scoreboardFirstLine;
 };

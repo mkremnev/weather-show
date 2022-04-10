@@ -20,7 +20,7 @@ const ScoreBoardSecondLine = () => {
       '.temp-weather > .temp-value'
     );
     tempWeather.textContent = `${Math.round(weather.current.temp)}`;
-  });
+  }, 'api');
 
   return scoreboardSecondLine;
 };

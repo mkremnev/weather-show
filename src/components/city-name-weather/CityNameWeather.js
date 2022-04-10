@@ -11,7 +11,7 @@ const CityNameWeather = () => {
 
   observer.subscribe(({ city }) => {
     cityName.textContent = city.city;
-  });
+  }, 'api');
 
   return cityNameWeather;
 };

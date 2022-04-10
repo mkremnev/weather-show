@@ -1,5 +1,6 @@
 import ContainerBg from '@/components/container-bg/ContainerBg';
 import DisplayWeather from '@/components/display-weather/DisplayWeather';
+import InsertCityModal from '@/components/insert-city-modal/InsertCityModal';
 import { Observer } from '@/observer';
 import { apiGetGeoLocation, getWeatherDaily } from '@/api';
 import '@/styles/main.scss';
@@ -9,7 +10,7 @@ export const observer = new Observer();
 const setDataFirstRender = async () => {
   const city = await apiGetGeoLocation();
   const data = await getWeatherDaily(city);
-  observer.notify({ city, weather: data });
+  observer.notify({ city, weather: data }, 'api');
 };
 
 setDataFirstRender();
@@ -17,6 +18,7 @@ setDataFirstRender();
 const App = () => {
   const containerBg = ContainerBg();
   const displayWeather = DisplayWeather();
+  const insertCityModal = InsertCityModal();
   const app = document.createElement('div');
   app.classList.add('app');
 
@@ -31,10 +33,11 @@ const App = () => {
   app.insertAdjacentElement('afterbegin', containerBg);
   app.insertAdjacentElement('afterbegin', displayWeather);
   app.insertAdjacentElement('beforeend', box);
+  app.insertAdjacentElement('beforeend', insertCityModal);
 
   observer.subscribe(() => {
     box.style.display = 'none';
-  });
+  }, 'api');
   return app;
 };
 

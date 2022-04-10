@@ -11,7 +11,7 @@ const HeaderWeather = () => {
 
   observer.subscribe(({ weather }) => {
     headerTitle.textContent = weather.current.weather[0].description;
-  });
+  }, 'api');
 
   return headerWeather;
 };

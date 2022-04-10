@@ -3,15 +3,21 @@ export class Observer {
     this.observer = [];
   }
 
-  subscribe(fn) {
-    this.observer.push(fn);
+  subscribe(fn, name) {
+    this.observer.push({ [name]: fn });
   }
 
-  unsubscribe(fn) {
-    this.observer = this.observer.filter((subscriber) => subscriber !== fn);
+  unsubscribe(name, fn) {
+    this.observer = this.observer.filter(
+      (subscriber) => subscriber[name] !== fn
+    );
   }
 
-  notify(data) {
-    this.observer.forEach((subscriber) => subscriber(data));
+  notify(data, name) {
+    const notificator = this.observer.filter((subscriber) =>
+      Object.keys(subscriber).includes(name)
+    );
+
+    notificator.forEach((subscriber) => subscriber[name](data));
   }
 }

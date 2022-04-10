@@ -6,6 +6,7 @@ const DaysItemsWeather = () => {
   list.classList.add('days-items-weather', 'scroll-section');
 
   observer.subscribe(({ weather }) => {
+    list.innerHTML = null;
     weather.daily.forEach((item, index) => {
       if (index > 0) {
         list.insertAdjacentElement(
@@ -18,7 +19,7 @@ const DaysItemsWeather = () => {
         );
       }
     });
-  });
+  }, 'api');
 
   return list;
 };
