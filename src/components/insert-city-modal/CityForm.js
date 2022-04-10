@@ -35,6 +35,7 @@ const CityForm = () => {
     }))[0];
     const weather = await getWeatherDaily(cityFormatted);
     observer.notify({ city: cityFormatted, weather }, 'api');
+    observer.notify('cities', 'ui');
   });
   return cityWrapper;
 };
