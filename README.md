@@ -1,4 +1,4 @@
-![example workflow](https://github.com/mkremnev/weather-show/actions/workflows/check-and-deploy.yml/badge.svg)
+![example workflow](https://github.com/mkremnev/weather-show/actions/workflows/check-and-deploy.yml/badge.svg?branch=master)
 
 # Проект "Календарь Погоды"
 
