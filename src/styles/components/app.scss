@@ -381,6 +381,26 @@
     @include font(18, 21);
   }
 }
+.list-cities {
+  margin-top: rem(10);
+  > h2 {
+    @include font(18, 21);
+    text-align: center;
+    margin-bottom: rem(10);
+  }
+  .cities-btn {
+    width: 100%;
+    padding: rem(15) 0;
+    color: $white;
+    cursor: pointer;
+    background: $dark-blue;
+    @include font(18, 21);
+    text-transform: uppercase;
+    &:not(&:last-child) {
+      margin-bottom: rem(10);
+    }
+  }
+}
 //insert-city-modal
 
 //maps-modal

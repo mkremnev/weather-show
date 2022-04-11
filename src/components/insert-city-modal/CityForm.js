@@ -1,4 +1,9 @@
-import { apiGetCity, getWeatherDaily } from '@/api';
+import {
+  apiGetCity,
+  apiGetHistory,
+  apiSetHistory,
+  getWeatherDaily,
+} from '@/api';
 import { observer } from '@/app';
 
 const CityForm = () => {
@@ -37,10 +42,14 @@ const CityForm = () => {
     }))[0];
     const weather = await getWeatherDaily(cityFormatted);
     btn.textContent = 'Найти';
+    
+    apiSetHistory(cityFormatted.city);
+    const cities = apiGetHistory();
 
     observer.notify({ city: cityFormatted, weather }, 'api');
     observer.notify([cityFormatted.latitude, cityFormatted.longitude], 'maps');
     observer.notify('cities', 'ui');
+    observer.notify(cities, 'add-cities');
   });
   return cityWrapper;
 };
