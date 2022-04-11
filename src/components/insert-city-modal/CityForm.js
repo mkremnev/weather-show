@@ -16,7 +16,7 @@ const CityForm = () => {
             <input id="input-city" class="input" placeholder="Название города">
           </div>
           <div class="city-actions">
-            <button type="submit">Найти</button>
+            <button type="submit" class="btn">Найти</button>
           </div>
         `
   );
@@ -26,7 +26,9 @@ const CityForm = () => {
   cityForm.addEventListener('submit', async (ev) => {
     ev.preventDefault();
     const input = cityForm.querySelector('.input');
+    const btn = cityForm.querySelector('.btn');
     const nameCity = input.value;
+    btn.textContent = 'Loading...';
     const city = await apiGetCity(nameCity);
     const cityFormatted = city.map((item) => ({
       city: item.name,
@@ -34,7 +36,10 @@ const CityForm = () => {
       longitude: item.longitude,
     }))[0];
     const weather = await getWeatherDaily(cityFormatted);
+    btn.textContent = 'Найти';
+
     observer.notify({ city: cityFormatted, weather }, 'api');
+    observer.notify([cityFormatted.latitude, cityFormatted.longitude], 'maps');
     observer.notify('cities', 'ui');
   });
   return cityWrapper;
