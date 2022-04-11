@@ -42,7 +42,7 @@ const CityForm = () => {
     }))[0];
     const weather = await getWeatherDaily(cityFormatted);
     btn.textContent = 'Найти';
-    
+
     apiSetHistory(cityFormatted.city);
     const cities = apiGetHistory();
 
