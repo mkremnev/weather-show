@@ -46,6 +46,9 @@ const CityForm = () => {
     apiSetHistory(cityFormatted.city);
     const cities = apiGetHistory();
 
+    apiSetHistory(cityFormatted.city);
+    const cities = apiGetHistory();
+
     observer.notify({ city: cityFormatted, weather }, 'api');
     observer.notify([cityFormatted.latitude, cityFormatted.longitude], 'maps');
     observer.notify('cities', 'ui');
