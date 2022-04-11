@@ -3,7 +3,12 @@ import DisplayWeather from '@/components/display-weather/DisplayWeather';
 import InsertCityModal from '@/components/insert-city-modal/InsertCityModal';
 import MapsModal from '@/components/maps-modal/MapsModal';
 import { Observer } from '@/observer';
-import { apiGetGeoLocation, getWeatherDaily, apiYandexMap } from '@/api';
+import {
+  apiGetGeoLocation,
+  getWeatherDaily,
+  apiYandexMap,
+  apiGetHistory,
+} from '@/api';
 import '@/styles/main.scss';
 
 export const observer = new Observer();
@@ -12,8 +17,10 @@ const setDataFirstRender = async () => {
   await apiYandexMap();
   const city = await apiGetGeoLocation();
   const data = await getWeatherDaily(city);
+  const cities = apiGetHistory();
   observer.notify({ city, weather: data }, 'api');
   observer.notify({ city }, 'createMap');
+  observer.notify(cities, 'add-cities');
 };
 
 setDataFirstRender();
