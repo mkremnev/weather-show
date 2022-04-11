@@ -1,15 +1,19 @@
+import { observer } from '@/app';
+
 const HeaderWeather = () => {
-  const el = document.createElement('div');
-  el.classList.add('header-weather');
+  const headerWeather = document.createElement('div');
+  headerWeather.classList.add('header-weather');
 
-  el.insertAdjacentHTML(
-    'afterbegin',
-    `
-  <div class="header-title">Rainy moning</div>
-  <div class="header-day">Tuesday 7:28 AM</div>`
-  );
+  const headerTitle = document.createElement('div');
+  headerTitle.classList.add('header-title');
 
-  return el;
+  headerWeather.insertAdjacentElement('afterbegin', headerTitle);
+
+  observer.subscribe(({ weather }) => {
+    headerTitle.textContent = weather.current.weather[0].description;
+  }, 'api');
+
+  return headerWeather;
 };
 
 export default HeaderWeather;

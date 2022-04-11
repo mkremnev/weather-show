@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 const paths = require('./paths');
 
 const StyleLoader = {
@@ -73,6 +74,8 @@ module.exports = () => {
       template: paths.appHtml,
     })
   );
+
+  plugins.push(new Dotenv());
 
   return {
     mode: 'production',

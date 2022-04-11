@@ -1,8 +1,10 @@
-const ScoreboardFirstLine = () => {
-  const el = document.createElement('div');
-  el.classList.add('scoreboard-first-line');
+import { observer } from '@/app';
 
-  el.insertAdjacentHTML(
+const ScoreboardFirstLine = () => {
+  const scoreboardFirstLine = document.createElement('div');
+  scoreboardFirstLine.classList.add('scoreboard-first-line');
+
+  scoreboardFirstLine.insertAdjacentHTML(
     'afterbegin',
     `<div class="first-line-item humidity-weather">
             <div class="item-title">
@@ -21,7 +23,19 @@ const ScoreboardFirstLine = () => {
          `
   );
 
-  return el;
+  observer.subscribe(({ weather }) => {
+    const humidity = scoreboardFirstLine.querySelector(
+      '.humidity-weather > .item-value'
+    );
+    const wind = scoreboardFirstLine.querySelector(
+      '.wind-weather > .item-value'
+    );
+
+    humidity.textContent = `${Math.round(weather.current.humidity)} %`;
+    wind.textContent = `${Math.round(weather.current.wind_speed)} km`;
+  }, 'api');
+
+  return scoreboardFirstLine;
 };
 
 export default ScoreboardFirstLine;

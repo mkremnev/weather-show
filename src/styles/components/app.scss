@@ -1,4 +1,4 @@
-#app {
+.app {
   position: relative;
   background: linear-gradient(#c2def3, #99bdd8);
   width: 100%;
@@ -6,6 +6,8 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  overflow: hidden;
+  overflow-y: auto;
 }
 .container-bg {
   position: absolute;
@@ -49,11 +51,9 @@
   @include fontBlack;
   @include font(37, 45);
   color: $dark-blue;
-}
-.header-day {
-  @include font(25, 25);
-  color: $dark-blue;
-  opacity: 0.5;
+  &:first-letter {
+    text-transform: uppercase;
+  }
 }
 // header-weather
 
@@ -278,4 +278,132 @@
     background: url('/public/assets/img/icon-cities.svg');
   }
 }
+
 //nav-weather
+
+//loading
+.box {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background: $white;
+}
+.loader {
+  border-radius: 50%;
+  box-shadow: 0 1em 0 -0.2em $dark-blue;
+  position: relative;
+  animation: loading 0.8s ease-in-out alternate infinite;
+  animation-delay: 0.32s;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  width: rem(16);
+  height: rem(16);
+  color: inherit;
+  vertical-align: middle;
+  pointer-events: none;
+  &:after,
+  &:before {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    box-shadow: inherit;
+    animation: inherit;
+  }
+  &:before {
+    left: -1em;
+    animation-delay: 0.48s;
+  }
+  &:after {
+    right: -1em;
+    animation-delay: 0.16s;
+  }
+}
+
+@keyframes loading {
+  0% {
+    box-shadow: 0 2em 0 -0.2em $dark-blue;
+  }
+  100% {
+    box-shadow: 0 1em 0 -0.2em $dark-blue;
+  }
+}
+// loader
+
+//insert-city-modal
+.insert-city-modal {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: rem(15);
+  transform: translateX(100%);
+  height: 100%;
+  width: rem(400);
+  background: $white;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  &.open {
+    transform: translateX(0);
+  }
+}
+.input-wrapper {
+  > label {
+    display: flex;
+    justify-content: center;
+    margin-bottom: rem(10);
+  }
+  > input {
+    width: 100%;
+    height: rem(40);
+    @include font(18, 21);
+    border: none;
+    border-bottom: rem(1) solid $dark-blue;
+    background: $white;
+  }
+}
+.city-actions {
+  margin-top: rem(15);
+  > button {
+    width: 100%;
+    padding: rem(15) 0;
+    color: $white;
+    cursor: pointer;
+    background: $dark-blue;
+    @include font(18, 21);
+  }
+}
+//insert-city-modal
+
+//maps-modal
+.maps-modal {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: rem(15);
+  transform: translateX(-100%);
+  height: 100%;
+  width: rem(400);
+  background: $white;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  &.open {
+    transform: translateX(0);
+  }
+}
+#map {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+//maps-modal

@@ -1,10 +1,19 @@
+import { observer } from '@/app';
+
 const CityNameWeather = () => {
-  const el = document.createElement('div');
-  el.classList.add('city-name-weather');
+  const cityNameWeather = document.createElement('div');
+  cityNameWeather.classList.add('city-name-weather');
 
-  el.insertAdjacentHTML('afterbegin', `<div class="city-name">Paris</div>`);
+  const cityName = document.createElement('div');
+  cityName.classList.add('city-name');
 
-  return el;
+  cityNameWeather.insertAdjacentElement('afterbegin', cityName);
+
+  observer.subscribe(({ city }) => {
+    cityName.textContent = city.city;
+  }, 'api');
+
+  return cityNameWeather;
 };
 
 export default CityNameWeather;
