@@ -5,7 +5,7 @@ const DaysItemWeather = ({ icon, temp, day }) => {
     'beforeend',
     `<div class="day-name">${day}</div>
             <div class="day-icon">
-              <img src="/assets/img/${icon}" alt="" />
+              <img src="${icon}" alt="" />
             </div>
             <div class="day-temp">
               ${temp}

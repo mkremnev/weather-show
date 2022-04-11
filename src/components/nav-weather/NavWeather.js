@@ -1,3 +1,5 @@
+import { observer } from '@/app';
+
 const NavWeather = () => {
   const el = document.createElement('div');
   el.classList.add('nav-weather');
@@ -9,7 +11,6 @@ const NavWeather = () => {
     'afterbegin',
     '<i class="icon-nav-weather maps"></i>'
   );
-  mapsBtn.addEventListener('click', () => console.log('click mapsBtn'));
 
   const citiesBtn = document.createElement('div');
   citiesBtn.classList.add('button-nav-weather');
@@ -18,7 +19,14 @@ const NavWeather = () => {
     'afterbegin',
     '<i class="icon-nav-weather cities"></i>'
   );
-  citiesBtn.addEventListener('click', () => console.log('click citiesBtn'));
+
+  mapsBtn.addEventListener('click', () => {
+    observer.notify('maps', 'ui');
+  });
+
+  citiesBtn.addEventListener('click', () => {
+    observer.notify('cities', 'ui');
+  });
 
   el.insertAdjacentElement('beforeend', mapsBtn);
   el.insertAdjacentElement('beforeend', citiesBtn);

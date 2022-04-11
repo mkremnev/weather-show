@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 const paths = require('./paths');
 
 const StyleLoader = {
@@ -54,6 +55,8 @@ module.exports = () => {
       template: paths.appHtml,
     })
   );
+
+  plugins.push(new Dotenv());
 
   return {
     devtool: 'inline-source-map',

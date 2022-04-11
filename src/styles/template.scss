@@ -33,6 +33,10 @@ body {
   position: relative;
 }
 
+.root {
+  height: 100%;
+}
+
 .scroll-section {
   &::-webkit-scrollbar {
     width: rem(4);
